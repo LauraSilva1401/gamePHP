@@ -44,6 +44,10 @@ class User
 	function insertDataDB(){
 
 	}
+
+	function compareData(){
+		
+	}
 }
 
 ?>
