@@ -18,6 +18,10 @@
 			    <label for="password" class="form-label">Password</label>
 			    <input type="password" class="form-control" id="password" name="password" required>
 			  </div>
+			  <div class="mb-3">
+			    <label for="password2" class="form-label">Verify  Password</label>
+			    <input type="password" class="form-control" id="password2" name="password2" required>
+			  </div>
 			  <button type="submit" class="btn btn-primary" id="submit" name="submit">Sign Up</button>
 			</form>
     	</div>
