@@ -1,0 +1,11 @@
+/*
+Registration CSS
+*/
+#formRegistration{
+	border: solid #dee2e6;
+	padding: 1.5rem;
+}
+
+#principalDiv{
+	margin-top: 4%;
+}
