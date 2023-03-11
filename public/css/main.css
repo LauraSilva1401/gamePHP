@@ -1,7 +1,7 @@
 /*
 Registration CSS
 */
-#formRegistration{
+#formRegistration, #formLogin{
 	border: solid #dee2e6;
 	padding: 1.5rem;
 }
@@ -9,3 +9,5 @@ Registration CSS
 #principalDiv{
 	margin-top: 4%;
 }
+
+
