@@ -13,7 +13,15 @@ class User
 	private $password2;
 	private $db;
 
-	function __construct($fname,$lname,$email,$password,$password2)
+	//construct login
+	function __construct($email,$password)
+	{
+		$this->email = $email;
+		$this->password = $password;
+	}
+
+	//construct registration
+	function __constructR($fname,$lname,$email,$password,$password2)
 	{
 		$this->fname = $fname;
 		$this->lname = $lname;
@@ -72,39 +80,59 @@ class User
 	}
 
 	function insertDataDB(){
+
 		//validate sqlInjection
 		$this->fname = mysqli_real_escape_string($this->db,$this->fname);
 		$this->lname = mysqli_real_escape_string($this->db,$this->lname);
+		$this->password = mysqli_real_escape_string($this->db,$this->password);
+		//password encryted
+		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
 
 		$query = "INSERT INTO users (FirstName, LastName, userName, Password) VALUES ('".$this->fname."','".$this->lname."','".$this->email."','".$this->password."');";
 
 	    $invokeQuery = $this->db->query($query);
+
 	    $this->db->close();
+	    
 	    if ($invokeQuery === FALSE){
 	    	//no user in db
 	    	return FALSE;
 	    }
 	    else{
 	    	//there is an user in the db
+	    	//start session variable
 	    	return TRUE;
 	    } 
 	}
 
-	function compareData($type){
+	function loginDataDB(){
+
+		//validate sqlInjection
+		$query = "SELECT * FROM users WHERE userName ='".$this->email."';";
+		$invokeQuery = $this->db->query($query);
+
+		$each_row = $invokeQuery->fetch_array(MYSQLI_ASSOC);
+		$pwd_peppered = base64_decode($each_row['Password']);
+
+		var_dump($this->password,$pwd_peppered,password_verify($this->password,$pwd_peppered),base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10])));exit();
+		if (password_verify($this->password,$pwd_peppered)) {
+			//user and password match
+	    	//start session variable
+		    return TRUE;
+		}
+		else {
+		    return FALSE;
+		}
+	}
+
+	function compareData(){
 		//Execute the query
-		//type = 1 = insert
-		//type = 2 = login
 
 		//validate sqlInjection
 		$this->email = mysqli_real_escape_string($this->db,$this->email);
-		$this->password = mysqli_real_escape_string($this->db,$this->password);
 
-		$query = ($type==1) ? "SELECT * FROM users WHERE userName ='".$this->email."';" : "SELECT * FROM users WHERE userName ='".$this->email."' AND Password='".$this->password."';";
+		$query = "SELECT * FROM users WHERE userName ='".$this->email."';";
 	    $invokeQuery = $this->db->query($query);
-	    
-	    if ($type==2) {
-    		$this->db->close();
-    	}
 
 	    if ($invokeQuery->num_rows==0){
 	    	//no user in db
@@ -115,6 +143,22 @@ class User
 	    	return TRUE;
 	    } 
 	}
+}
+
+$email = "joshrs23@gmail.com";
+$password = "123456";
+
+$login = new User($email,$password);
+$ans = $login->validateDataDB();
+if ($ans === true) {
+	$ans = $login->compareData();
+	if ($ans === true) {
+		// user doesnt exist so we can add it
+		$ans = $login->loginDataDB();
+		echo $ans;
+	}
+}else{
+	echo $ans;
 }
 
 ?>

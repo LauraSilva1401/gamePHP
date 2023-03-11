@@ -11,7 +11,7 @@ $ans = $login->validateData();
 if ($ans === true) {
 	$ans = $login->validateDataDB();
 	if ($ans === true) {
-		$ans = $login->compareData(1);
+		$ans = $login->compareData();
 		if ($ans === false) {
 			// user doesnt exist so we can add it
 			$ans = $login->insertDataDB();
