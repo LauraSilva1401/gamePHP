@@ -6,10 +6,11 @@ $(document).ready(function(){
         event.preventDefault();                             
         var email = $("#email").val();
         var password = $("#password").val();
+        var password2 = $("#password2").val();
         var fname = $("#fname").val();
         var lname = $("#lname").val();
 
-        $.post("controllers/registration.php",{Email: email, Password: password, Fname:fname, Lname:lname},function(res){
+        $.post("controllers/registration.php",{Email: email, Password: password,Password2: password2, Fname:fname, Lname:lname},function(res){
             console.log("***"+res+"***");
             if(res == true){
             	console.log("entro si");

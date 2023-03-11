@@ -17,7 +17,7 @@
 		}
 
 		function connectToHOSTDB(){
-		    $messages=messages();
+		    //$messages=messages();
 		    //Attempt to connect to MySQL using MySQLi
 		    $connection = new mysqli($this->host, $this->user, $this->password);
 		    //If connection to the MySQL failed save the system error message 
