@@ -101,6 +101,12 @@ class User
 	    else{
 	    	//there is an user in the db
 	    	//start session variable
+	    	session_start();
+	    	$_SESSION['email'] = $this->email;
+	    	$_SESSION['name'] = $this->fname;
+	    	$_SESSION['password'] = $this->password;
+	    	$_SESSION['lives'] = 6;
+	    	$_SESSION['level'] = 1;
 	    	return TRUE;
 	    } 
 	}
@@ -114,10 +120,15 @@ class User
 		$each_row = $invokeQuery->fetch_array(MYSQLI_ASSOC);
 		$pwd_peppered = base64_decode($each_row['Password']);
 
-		var_dump($this->password,$pwd_peppered,password_verify($this->password,$pwd_peppered),base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10])));exit();
 		if (password_verify($this->password,$pwd_peppered)) {
 			//user and password match
 	    	//start session variable
+	    	session_start();
+	    	$_SESSION['email'] = $this->email;
+	    	$_SESSION['name'] = $each_row['FirstName'];
+	    	$_SESSION['password'] = $pwd_peppered;
+	    	$_SESSION['lives'] = 6;
+	    	$_SESSION['level'] = 1;
 		    return TRUE;
 		}
 		else {
@@ -144,6 +155,20 @@ class User
 	    } 
 	}
 }
+
+	function logOut(){
+		session_start();
+		 if (ini_get("session.use_cookies")) {
+		    $params = session_get_cookie_params();
+		    setcookie(session_name(), '', time() - 42000,
+		        $params["path"], $params["domain"],
+		        $params["secure"], $params["httponly"]
+		    );
+		}
+
+		// Finally, the session is destroy
+		session_destroy();
+	}
 
 $email = "joshrs23@gmail.com";
 $password = "123456";
