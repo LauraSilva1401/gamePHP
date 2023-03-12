@@ -118,6 +118,7 @@ class User
 		$invokeQuery = $this->db->query($query);
 
 		$each_row = $invokeQuery->fetch_array(MYSQLI_ASSOC);
+
 		$pwd_peppered = base64_decode($each_row['Password']);
 
 		if (password_verify($this->password,$pwd_peppered)) {
@@ -170,10 +171,12 @@ class User
 		session_destroy();
 	}
 
+//esto no va aca, esto va en login.php en controllres
 $email = "joshrs23@gmail.com";
 $password = "123456";
 
 $login = new User($email,$password);
+//aca falta funcion validar data del form
 $ans = $login->validateDataDB();
 if ($ans === true) {
 	$ans = $login->compareData();
