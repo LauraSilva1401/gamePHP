@@ -13,15 +13,8 @@ class User
 	private $password2;
 	private $db;
 
-	//construct login
-	function __construct($email,$password)
-	{
-		$this->email = $email;
-		$this->password = $password;
-	}
-
-	//construct registration
-	function __constructR($fname,$lname,$email,$password,$password2)
+	//construct login and registration
+	function __construct($email,$password,$password2=null,$fname=null,$lname=null)
 	{
 		$this->fname = $fname;
 		$this->lname = $lname;
@@ -70,7 +63,7 @@ class User
 						if ($this->password==$this->password2) {
 							return "Error, password lenght must be between 6 and 12";
 						}else{
-							return "Error, passwords doesnt match! ";
+							return "Error, passwords doesnt match!";
 						}
 						
 					}
