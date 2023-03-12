@@ -192,22 +192,6 @@ class User
 		session_destroy();
 	}
 
-//esto no va aca, esto va en login.php en controllres
-$email = "joshrs23@gmail.com";
-$password = "123456";
 
-$login = new User($email,$password);
-//aca falta funcion validar data del form
-$ans = $login->validateDataDB();
-if ($ans === true) {
-	$ans = $login->compareData();
-	if ($ans === true) {
-		// user doesnt exist so we can add it
-		$ans = $login->loginDataDB();
-		echo $ans;
-	}
-}else{
-	echo $ans;
-}
 
 ?>
