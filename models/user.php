@@ -29,6 +29,27 @@ class User
 		$this->password = $password;
 		$this->password2 = $password2;
 	}
+	
+	function validateDataLogin(){
+		
+		$this -> email = strtolower(stripslashes(strip_tags(htmlentities($this -> email))));
+		$this -> password = stripslashes(strip_tags(htmlentities($this -> password)));
+
+		if(!is_numeric($this -> email) && strlen($this -> email) > 14 && strlen($this -> email) < 31 ){
+			if (strlen($this->password)>5 && strlen($this->password)<13 ) {
+				return true;
+			}else{
+
+				return "Error, password length must be between 6 and 12";
+				
+			}
+		}
+		else
+		{
+			return "Error, email lenght must be between 15 and 30";
+		}
+
+	}
 
 	function validateData(){
 		//validate the data 
@@ -170,20 +191,6 @@ class User
 		session_destroy();
 	}
 
-$email = "joshrs23@gmail.com";
-$password = "123456";
 
-$login = new User($email,$password);
-$ans = $login->validateDataDB();
-if ($ans === true) {
-	$ans = $login->compareData();
-	if ($ans === true) {
-		// user doesnt exist so we can add it
-		$ans = $login->loginDataDB();
-		echo $ans;
-	}
-}else{
-	echo $ans;
-}
 
 ?>
