@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
+	<header>
+		<?php
+		require_once  'views/header.php';
+		?>
+	</header>
 	<?php 
 	if (isset($_GET['pagina']) && $_GET['pagina'] == 'login') {
 		require_once 'views/login.php';
