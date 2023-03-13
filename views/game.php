@@ -1,7 +1,7 @@
 <p>hello in to the game <strong><?= $_SESSION['name']?></strong></p>
 <div id="principalDiv" class="container">
 	<div class="row justify-content-center">
-		<div id="formLogin" class = "col-4" >
+		<div id="formLogin" class = "col-8 col-sm-8 col-lg-6 col-xl-4 col-xxl-4" >
 			<div id="PositiveAlert" class="alert alert-success alert-dismissible fade show" role="alert">
 				<strong>You have successfully pass.</strong> 
             </div>
@@ -11,7 +11,7 @@
             <h3>Level <strong><?= $_SESSION['level']?></strong></h3>
 			<form>
 				<div class="mb-3">
-					<label for="question" class="form-label">Qestion</label>
+					<label for="question" class="form-label">Question</label>
 					<input type="email" class="form-control" id="question" name="question">
 				</div>
 				<div class="mb-3">
