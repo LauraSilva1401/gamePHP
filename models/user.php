@@ -159,6 +159,7 @@ class User
 
 		$query = "SELECT * FROM users WHERE userName ='".$this->email."';";
 	    $invokeQuery = $this->db->query($query);
+		
 
 	    if ($invokeQuery->num_rows==0){
 	    	//no user in db
