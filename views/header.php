@@ -16,9 +16,14 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
+      <?php 
+      $valeButton="Log in";
+        if (isset($_SESSION['LOGIN_STATUS'])) {
+          $valeButton="Log out";
+        }
+       ?>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit" id="LogOut" value="<?= $valeButton?>"><?= $valeButton?></button>
       </form>
     </div>
   </div>

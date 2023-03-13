@@ -1,0 +1,1 @@
+<p>hello in to the game <strong><?= $_SESSION['name']?></strong></p>

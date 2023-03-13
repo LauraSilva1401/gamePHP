@@ -14,7 +14,7 @@ class User
 	private $db;
 
 	//construct login and registration
-	function __construct($email,$password,$password2=null,$fname=null,$lname=null)
+	function __construct($email=null,$password=null,$password2=null,$fname=null,$lname=null)
 	{
 		$this->fname = $fname;
 		$this->lname = $lname;
@@ -124,6 +124,7 @@ class User
 	    	$_SESSION['email'] = $this->email;
 	    	$_SESSION['name'] = $this->fname;
 	    	$_SESSION['password'] = $this->password;
+	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;
 	    	return TRUE;
@@ -147,6 +148,7 @@ class User
 	    	$_SESSION['email'] = $this->email;
 	    	$_SESSION['name'] = $each_row['FirstName'];
 	    	$_SESSION['password'] = $pwd_peppered;
+	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;
 		    return TRUE;
@@ -175,8 +177,6 @@ class User
 	    	return TRUE;
 	    } 
 	}
-}
-
 	function logOut(){
 		session_start();
 		 if (ini_get("session.use_cookies")) {
@@ -190,7 +190,5 @@ class User
 		// Finally, the session is destroy
 		session_destroy();
 	}
-
-
-
+}
 ?>

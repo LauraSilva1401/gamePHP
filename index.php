@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +18,36 @@
 	</header>
 	<?php 
 	if (isset($_GET['pagina']) && $_GET['pagina'] == 'login') {
-		require_once 'views/login.php';
+		if (!isset($_SESSION['LOGIN_STATUS'])) {
+			require_once 'views/login.php';
+		}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=game">
+ 	<?php
+		}
 	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'registration') {
-		require_once 'views/registration.php';
+		if (!isset($_SESSION['LOGIN_STATUS'])) {
+			require_once 'views/registration.php';
+		}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=game">
+ 	<?php
+		}
+		
+	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'game') {
+		if (isset($_SESSION['LOGIN_STATUS'])) {
+			require_once 'views/game.php';
+		}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=login">
+ 	<?php
+		}
 	}
 		
 	?>
 <script src="public/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="public/js/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="public/js/logout.js"></script>
 	<?php 
 	if (isset($_GET['pagina']) && $_GET['pagina'] == 'login') {
 		?>
@@ -34,7 +59,13 @@
 		<script type="text/javascript" src="public/js/registration.js"></script>
 		<?php
 		}else{
-			//echo "nada";
+			if (isset($_GET['pagina']) && $_GET['pagina'] == 'game') {
+			?>
+			
+			<?php
+			}else{
+				//echo "nada";
+			}
 		}
 	}
 	?>
