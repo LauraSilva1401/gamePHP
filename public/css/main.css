@@ -5,7 +5,16 @@ Registration CSS
 	border: solid #dee2e6;
 	padding: 1.5rem;
 }
+#NegativeAlert{
+	display: none;
+}
+#PositiveAlert{
+	display: none;
+}
 
+/*
+Login CSS
+*/
 #principalDiv{
 	margin-top: 4%;
 }
