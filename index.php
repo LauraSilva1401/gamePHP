@@ -73,5 +73,11 @@ session_start();
 		}
 	}
 	?>
+
+	<footer>
+		<?php
+		require_once  'views/footer.php';
+		?>
+	</footer>
 </body>
 </html>
