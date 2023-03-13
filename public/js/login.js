@@ -15,7 +15,7 @@ $(document).ready(function(){
                 if ( !$( '#PositiveAlert' ).hasClass( 'yes' ) ){
                     $( '#PositiveAlert' ).addClass( "yes" );
                 }
-               //window.location.href = "devices.php";   
+               window.location.href = "index.php?pagina=login";    
             }else{
                 console.log("entro no");
                 //$("#NegativeAlert").delay(500).fadeIn("slow"); 

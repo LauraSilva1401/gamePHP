@@ -10,7 +10,7 @@ console.log("entro a logout");
             event.preventDefault();     
             $.post("controllers/logOut.php",{},function(res){
                 console.log("***"+res+"***");
-                //window.location.href = "index.php?pagina=login";   
+                window.location.href = "index.php?pagina=login";   
                 
             })
         }          
