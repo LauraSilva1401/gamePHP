@@ -32,23 +32,26 @@ $(document).ready(function(){
     });
 
     function validatedForm(ans){
-    	
+    	console.log(ans === "Error, email lenght must be between 15 and 30");
         if($("#fname").val() == "" || ans === "Error, firstName must be letter a-z and lenght between 4 and 17"){
             $("#fname").focus();
-        }
-        if($("#lname").val() == "" || ans === "Error, lastName must be letter a-z and lenght between 4 and 17"){
-            $("#lname").focus();
-        }
-        if($("#email").val() == "" || ans === "Error, email lenght must be between 15 and 30"){
-            $("#email").focus();
-        }
-        if($("#password").val() == "" || ans === "Error, password lenght must be between 6 and 12"){
-            $("#password").focus(); 
-        }
-        if($("#password2").val() == "" || ans === "Error, passwords doesnt match!"){
-        	console.log("entro aca");
-            $("#password2").focus()
-        }
+        }else{
+        	if($("#lname").val() == "" || ans === "Error, lastName must be letter a-z and lenght between 4 and 17"){
+            	$("#lname").focus();
+        	}else{
+        		if($("#email").val() == "" || ans === "Error, email lenght must be between 15 and 30" || ans === "Error, write a correct email!"){
+		            $("#email").focus();
+		        }else{
+		        	if($("#password").val() == "" || ans === "Error, password lenght must be between 6 and 12"){
+			            $("#password").focus(); 
+			        }else{
+			        	if($("#password2").val() == "" || ans === "Error, passwords doesnt match!"){
+				        	$("#password2").focus()
+				        }
+			        }
+		        }
+        	}
+        }             
     }
 
     setInterval(function () {
