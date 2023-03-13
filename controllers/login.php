@@ -6,6 +6,7 @@ $password = $_POST['Password'];
 
 $login = new User($email,$password);
 $ans = $login->validateDataLogin();
+
 if ($ans === true) {
 	$ans = $login->compareData();
 	if ($ans === false) {
