@@ -42,6 +42,10 @@ session_start();
 			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=login">
  	<?php
 		}
+	}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=login">
+ 	<?php
 	}
 		
 	?>
