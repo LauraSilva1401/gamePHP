@@ -1,1 +1,1 @@
-<p>hello in to the game <strong><?= $_SESSION['name']?></strong></p>
+<p>hello into the game <strong><?= $_SESSION['name']?></strong></p>
