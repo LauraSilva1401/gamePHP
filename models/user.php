@@ -39,7 +39,7 @@ class User
 		}
 		else
 		{
-			return "Error, email lenght must be between 15 and 30";
+			return "Error, email length must be between 15 and 30";
 		}
 
 	}

@@ -1,6 +1,12 @@
 <div id="principalDiv" class="container">
 	<div class="row justify-content-center">
 		<div id="formLogin" class = "col-4" >
+			<div id="PositiveAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>You have successfully Login.</strong> 
+            </div>
+			<div id="NegativeAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>An example danger alert.</strong> 
+            </div>
 			<form>
 				<div class="mb-3">
 					<label for="exampleInputEmail1" class="form-label">Email address</label>
