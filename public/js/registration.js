@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
 
     function validatedForm(ans){
-    	console.log(ans === "Error, email lenght must be between 15 and 30");
+    	
         if($("#fname").val() == "" || ans === "Error, firstName must be letter a-z and lenght between 4 and 17"){
             $("#fname").focus();
         }else{

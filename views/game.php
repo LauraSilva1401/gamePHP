@@ -9,21 +9,12 @@
 				<strong>An example danger alert.</strong> 
             </div>
             <h3>Level <strong><?= $_SESSION['level']?></strong></h3>
-			<form>
-				<div class="mb-3">
-					<label for="question" class="form-label">Question</label>
-					<input type="email" class="form-control" id="question" name="question">
-				</div>
-				<div class="mb-3">
-					<label for="answer" class="form-label">answer</label>
-					<input type="text" class="form-control" id="answer" name="answer">
-				</div>
- 				<!-- <div class="mb-3 form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">Check me out</label>
-				</div>  -->
-				<button type="submit" class="btn btn-primary" id = "submit">Submit</button>
-			</form>
+            <h5 id="lives">#Lives:<strong><?= $_SESSION['lives']?></strong></h5>
+			<?php 
+				if($_SESSION['level'] == 1){
+					require_once 'views/level1.php';
+				}
+			?>
         </div>
 	</div>
 </div>

@@ -65,7 +65,7 @@ session_start();
 		}else{
 			if (isset($_GET['pagina']) && $_GET['pagina'] == 'game') {
 			?>
-			
+				<script type="text/javascript" src="public/js/game.js"></script>
 			<?php
 			}else{
 				//echo "nada";
