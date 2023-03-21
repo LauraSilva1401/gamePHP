@@ -1,4 +1,13 @@
 /*
+All
+*/
+body{
+    background-color: snow;
+}
+#barraMenu{
+    background-color: #D5CACA !important;
+}
+/*
 Registration CSS
 */
 #formRegistration, #formLogin{
@@ -10,6 +19,12 @@ Registration CSS
 }
 #PositiveAlert{
 	display: none;
+}
+
+.tittleForm{
+    border: solid #dee2e6;
+    padding: 1.5rem;
+    background-color: #D5CACA;
 }
 
 /*

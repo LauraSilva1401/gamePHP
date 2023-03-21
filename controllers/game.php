@@ -32,9 +32,33 @@ if (isset($_POST["Type"])) {
 						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
 						echo json_encode($arrayAns);
 					}
-				}
-				elseif ($_SESSION["level"] == 2) {
-					
+				}elseif ($_SESSION["level"] == 2) {
+					$ans = $level->validate_level_descending();
+					if ($ans === TRUE) {
+						$_SESSION["level"] = 3;
+						echo $ans;
+					}else{
+						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+						echo json_encode($arrayAns);
+					}
+				}elseif ($_SESSION["level"] == 3) {
+					$ans = $level->validate_level_ascending();
+					if ($ans === TRUE) {
+						$_SESSION["level"] = 4;
+						echo $ans;
+					}else{
+						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+						echo json_encode($arrayAns);
+					}
+				}elseif ($_SESSION["level"] == 4) {
+					$ans = $level->validate_level_descending();
+					if ($ans === TRUE) {
+						$_SESSION["level"] = 5;
+						echo $ans;
+					}else{
+						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+						echo json_encode($arrayAns);
+					}
 				}
 			}else{
 				echo "Sorry you dont have more lives, restart the game";

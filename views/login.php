@@ -1,5 +1,10 @@
 <div id="principalDiv" class="container">
 	<div class="row justify-content-center">
+		<div class = "col-8 col-sm-8 col-lg-6 col-xl-4 col-xxl-4 tittleForm" >
+			<h1>Login</h1>
+		</div>
+	</div>
+	<div class="row justify-content-center">
 		<div id="formLogin" class = "col-8 col-sm-8 col-lg-6 col-xl-4 col-xxl-4" >
 			<div id="PositiveAlert" class="alert alert-success alert-dismissible fade show" role="alert">
 				<strong>You have successfully Login.</strong> 

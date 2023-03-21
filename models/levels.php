@@ -48,7 +48,36 @@ class Levels
 				return TRUE;
 			}else{
 				$this->validate_lives();
-				return "Your numbers have not been correctly ordered in ascending order ";
+				$levelDescription = ($_SESSION["level"]==1 || $_SESSION["level"]==2) ? "letters":"numbers";
+				return "Your $levelDescription  have not been correctly ordered in ascending order ";
+			}
+		}else{
+			$this->validate_lives();
+			return $ans;
+		}
+
+	}
+
+	function validate_level_descending(){
+		$array_real = explode(",",str_replace(array(' ', "\t"), '', $this->real));
+		$array_ans_order = explode(",",str_replace(array(' ', "\t"), '', $this->answer));
+		$array_ans = explode(",",str_replace(array(' ', "\t"), '', $this->answer));
+		rsort($array_real);
+		rsort($array_ans_order);
+		$ans = $this->validation_data($array_real,$array_ans_order);
+		if($ans === TRUE){
+			$count=0;
+			for ($i=0; $i < count($array_real); $i++) { 
+				if($array_real[$i] == $array_ans[$i]){
+					$count = $count+1;
+				}
+			}
+			if (count($array_real) == $count) {
+				return TRUE;
+			}else{
+				$this->validate_lives();
+				$levelDescription = ($_SESSION["level"]==1 || $_SESSION["level"]==2) ? "letters":"numbers";
+				return "Your $levelDescription  have not been correctly ordered in descending order ";
 			}
 		}else{
 			$this->validate_lives();

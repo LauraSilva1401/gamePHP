@@ -1,6 +1,6 @@
 <form>
 	<div class="mb-3">
-		<label for="question" class="form-label">Question: <small>Order letters in ascending order. </small> </label>
+		<label for="question" class="form-label">Question: <small>Order numbers in descending order. </small> </label>
 		<input type="text" class="form-control" id="question" name="question" disabled>
 	</div>
 	<div class="mb-3">
