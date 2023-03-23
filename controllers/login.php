@@ -24,20 +24,16 @@ if ($ans === true) {
 			{
 				echo $ans;
 			}
-
 		}
 		else
 		{
 			echo $ans;
-
 		}
 	}
 	else
 	{
 		echo $ans;
 	}
-	
-	
 }else{
 	echo $ans;
 }
