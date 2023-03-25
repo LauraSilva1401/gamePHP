@@ -1,4 +1,4 @@
-<p>hello in4to the game <strong><?= $_SESSION['name']?></strong></p>
+<p>hello into the game <strong><?= $_SESSION['name']?></strong></p>
 <div id="principalDiv" class="container">
 	<div class="row justify-content-center">
 		<div id="formLogin" class = "col-8 col-sm-8 col-lg-6 col-xl-4 col-xxl-4" >
