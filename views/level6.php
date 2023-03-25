@@ -5,7 +5,7 @@
 	</div>
 	<div class="mb-3">
 		<label for="answer" class="form-label">Answer</label>
-		<input type="text" class="form-control" id="answer" name="answer">
+		<input type="text" class="form-control"placeholder="1,50" id="answer" name="answer">
 	</div>
 		<!-- <div class="mb-3 form-check">
 		<input type="checkbox" class="form-check-input" id="exampleCheck1">
