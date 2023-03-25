@@ -15,7 +15,7 @@
             </div>
             <h3>Level <strong><?= $_SESSION['level']?></strong></h3>
             <h5 id="lives">#Lives:<strong><?= $_SESSION['lives']?></strong></h5>
-			<?php 
+			<?php
 				if($_SESSION['level'] == 1){
 					require_once 'views/level1.php';
 				}elseif ($_SESSION['level'] == 2) {
