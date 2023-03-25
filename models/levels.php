@@ -86,6 +86,29 @@ class Levels
 
 	}
 
+	function validate_level_min_max(){
+		$array_real = explode(",",str_replace(array(' ', "\t"), '', $this->real));
+		$array_ans = explode(",",str_replace(array(' ', "\t"), '', $this->answer));
+		rsort($array_real);
+		//validar que los dos esten en el array
+		// iguales iutlimo y primero en ambos yya
+		$ans ="";
+		$levelDescription = ($_SESSION["level"]==5 || $_SESSION["level"]==6) ? "letters, FIRST and LAST! ":"numbers, MIN and MAX!";
+		if (count($array_ans)==2) {
+			$ans = ($array_real[0]==$array_ans[0] && $array_real[5]==$array_ans[1]) ? TRUE: "Error, the";
+		}else{
+			$ans ="Error, your answer must be just two $levelDescription";
+		}
+
+		if($ans === TRUE){
+			return TRUE;
+		}else{
+			$this->validate_lives();
+			return $ans;
+		}
+
+	}
+
 	function validate_lives(){
 		if ($_SESSION["lives"]>0) {
 			$_SESSION["lives"] = $_SESSION["lives"] - 1;
@@ -93,7 +116,8 @@ class Levels
 	}
 
 	function get_numberValue(){
-		$times = rand(6,10);
+		//$times = rand(6,10);
+		$times = 6;
 		$i = 0;
 		$number = "";
 		while($i < $times-1){
@@ -105,7 +129,8 @@ class Levels
 	}
 
 	function get_stringValue(){
-		$txt = implode(',',str_split(substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,rand(6,10))));
+		//$txt = implode(',',str_split(substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,rand(6,10))));
+		$txt = implode(',',str_split(substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,6)));
 		return $txt;
 	}
 }
