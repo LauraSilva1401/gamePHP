@@ -43,6 +43,39 @@ class User
 		}
 
 	}
+	
+	function validateDataResetPassword(){
+		
+		//validate the data 
+		//if it is a strings 
+		//stripslashes(), strip_tags(), and htmlentities()
+		
+		$this->email = strtolower(stripslashes(strip_tags(htmlentities($this->email))));
+		$this->password = stripslashes(strip_tags(htmlentities($this->password)));
+		$email_regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+
+		//validate size of all input data and if they are strings or not
+	
+				if (!is_numeric($this->email) && strlen($this->email)>14 && strlen($this->email)<31 && preg_match($email_regex, $this->email)) {
+					if (strlen($this->password)>5 && strlen($this->password)<13 && $this->password==$this->password2) {
+						return true;
+					}else{
+						if ($this->password==$this->password2) {
+							return "Error, password lenght must be between 6 and 12";
+						}else{
+							return "Error, passwords doesnt match!";
+						}
+						
+					}
+				}else{
+					if (!preg_match($email_regex, $this->email)) {
+						return "Error, write a correct email!";
+					}else{
+						return "Error, email lenght must be between 15 and 30";						
+					}
+				}
+
+	}
 
 	function validateData(){
 		//validate the data 
@@ -82,6 +115,8 @@ class User
 			return "Error, firstName must be letter a-z and lenght between 4 and 17";
 		}
 	}
+
+
 
 	function validateDataDB(){
 		require_once 'db_Info.php';
@@ -133,10 +168,9 @@ class User
 	    } 
 	}
 
-	function updateDataDB(){
+	function updatePasswordDB(){
 
 		//validate sqlInjection
-		
 		$this->password = mysqli_real_escape_string($this->db,$this->password);
 		//password encryted
 		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
@@ -153,7 +187,13 @@ class User
 	    }
 	    else{
 	    	
-	    
+			session_start();
+	    	$_SESSION['email'] = $this->email;
+	    	$_SESSION['name'] = $this->fname;
+	    	$_SESSION['password'] = $this->password;
+	    	$_SESSION['LOGIN_STATUS'] = true;
+	    	$_SESSION['lives'] = 6;
+	    	$_SESSION['level'] = 1;
 	    	return TRUE;
 	    } 
 	}

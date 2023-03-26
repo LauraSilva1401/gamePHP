@@ -6,7 +6,7 @@ $password = $_POST['Password'];
 
 $createNewPass = new User($email,$password);
 
-$ans = $createNewPass->validateDataLogin();
+$ans = $createNewPass->validateDataResetPassword();
 
 if ($ans === true) {
 	if ($ans === true){
@@ -18,7 +18,7 @@ if ($ans === true) {
 			if($ans === true)
 			{
 				// user exists
-				$ans = $createNewPass -> loginDataDB();
+				$ans = $createNewPass -> updatePasswordDB();
 				echo $ans;
 			}
 			else
