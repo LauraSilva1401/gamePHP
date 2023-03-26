@@ -1,4 +1,19 @@
 <p>hello in4to the game <strong><?= $_SESSION['name']?></strong></p>
+<?php  
+if ($_SESSION["LOGIN_STATUS"]==FALSE) {
+?>
+	<div id="winAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>You have won the game!!Congratulations.</strong> 
+	</div>
+<?php 
+}elseif ($_SESSION["lives"]==0) {
+?>
+	<div id="loseAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+		<strong>You have lost the game, you dont have more lives.</strong> 
+	</div>
+<?php 
+}
+?>
 <div id="principalDiv" class="container">
 	<div class="row justify-content-center">
 		<div class = "col-8 col-sm-8 col-lg-6 col-xl-4 col-xxl-4 tittleForm" >

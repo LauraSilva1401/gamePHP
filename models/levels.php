@@ -89,13 +89,13 @@ class Levels
 	function validate_level_min_max(){
 		$array_real = explode(",",str_replace(array(' ', "\t"), '', $this->real));
 		$array_ans = explode(",",str_replace(array(' ', "\t"), '', $this->answer));
-		rsort($array_real);
+		sort($array_real);
 		//validar que los dos esten en el array
 		// iguales iutlimo y primero en ambos yya
 		$ans ="";
-		$levelDescription = ($_SESSION["level"]==5 || $_SESSION["level"]==6) ? "letters, FIRST and LAST! ":"numbers, MIN and MAX!";
+		$levelDescription = ($_SESSION["level"]==5 || $_SESSION["level"]==6) ? "letters must be the FIRST and LAST! ":"numbers must be the MIN and MAX!";
 		if (count($array_ans)==2) {
-			$ans = ($array_real[0]==$array_ans[0] && $array_real[5]==$array_ans[1]) ? TRUE: "Error, the";
+			$ans = ($array_real[0]==$array_ans[0] && $array_real[5]==$array_ans[1]) ? TRUE: "Error, the $levelDescription";
 		}else{
 			$ans ="Error, your answer must be just two $levelDescription";
 		}

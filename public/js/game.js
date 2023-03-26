@@ -25,6 +25,12 @@ $(document).ready(function(){
                     $( '#NegativeAlert' ).addClass( "yes" );
                 }
                 validatedForm(text['ans']);
+                if(text['lives']=="0"){
+                    //window.location.href = "index.php?pagina=game"; 
+                    setTimeout(function(){
+                        window.location.href = "index.php?pagina=game"; 
+                    }, 4000);
+                }
             } 
         })  
     });

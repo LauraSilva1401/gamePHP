@@ -21,7 +21,7 @@ if (isset($_POST["Type"])) {
 		if (isset($_POST["Answer"])) {
 			$answer = $_POST["Answer"];
 			$real = $_POST["Real"];
-			if ($_SESSION["lives"]>0) {
+			if ($_SESSION["lives"]>0 && $_SESSION["LOGIN_STATUS"] == TRUE) {
 				$level = new Levels($answer,$real);
 				if ($_SESSION["level"] == 1) {
 					$ans = $level->validate_level_ascending();
@@ -59,9 +59,35 @@ if (isset($_POST["Type"])) {
 						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
 						echo json_encode($arrayAns);
 					}
+				}elseif ($_SESSION["level"] == 5) {
+					$ans = $level->validate_level_min_max();
+					if ($ans === TRUE) {
+						$_SESSION["level"] = 6;
+						echo $ans;
+					}else{
+						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+						echo json_encode($arrayAns);
+					}
+				}elseif ($_SESSION["level"] == 6) {
+					$ans = $level->validate_level_min_max();
+					if ($ans === TRUE) {
+						$_SESSION["LOGIN_STATUS"] = FALSE;
+						echo $ans;
+					}else{
+						$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+						echo json_encode($arrayAns);
+					}
 				}
 			}else{
-				echo "Sorry you dont have more lives, restart the game";
+				if ($_SESSION["lives"]>0 && $_SESSION["LOGIN_STATUS"] == TRUE){
+					$ans = "Sorry you dont have more lives, restart the game";
+					$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+					echo json_encode($arrayAns);
+				}else{
+					$ans = "The game is over";
+					$arrayAns = array("ans"=>$ans,"lives"=>$_SESSION["lives"] );
+					echo json_encode($arrayAns);
+				}
 			}
 		}
 	}
