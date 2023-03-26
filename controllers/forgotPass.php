@@ -4,21 +4,21 @@ require_once '../models/user.php';
 $email = $_POST['Email'];
 $password = $_POST['Password'];
 
-$login = new User($email,$password);
+$createNewPass = new User($email,$password);
 
-$ans = $login->validateDataLogin();
+$ans = $createNewPass->validateDataResetPassword();
 
 if ($ans === true) {
 	if ($ans === true){
-		$ans = $login -> validateDataDB();
+		$ans = $createNewPass -> validateDataDB();
 		if ($ans === true) {
 
-			$ans = $login -> compareData();
+			$ans = $createNewPass -> compareData();
 
 			if($ans === true)
 			{
 				// user exists
-				$ans = $login -> loginDataDB();
+				$ans = $createNewPass -> updatePasswordDB();
 				echo $ans;
 			}
 			else
@@ -40,4 +40,3 @@ if ($ans === true) {
 }
 
 ?>
-

@@ -1,4 +1,4 @@
-<p>hello in4to the game <strong><?= $_SESSION['name']?></strong></p>
+<p>hello into the game <strong><?= $_SESSION['name']?></strong></p>
 <?php  
 if ($_SESSION["LOGIN_STATUS"]==FALSE) {
 ?>

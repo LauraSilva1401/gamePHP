@@ -14,7 +14,7 @@
             </div>
 			<form>
 				<div class="mb-3">
-					<label for="exampleInputEmail1" class="form-label">Email address</label>
+					<label for="exampleInputEmail1" class="form-label">Username</label>
 					<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
 					<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
 				</div>
@@ -27,6 +27,15 @@
 					<label class="form-check-label" for="exampleCheck1">Check me out</label>
 				</div>  -->
 				<button type="submit" class="btn btn-primary" id = "submit">Submit</button>
+
+				<div>
+				<br>
+				<a href="index.php?pagina=registration">Don't have an account yet? </a>
+				<br>
+				<br>
+				<a href="index.php?pagina=forgotPass">Forgot Password? </a>
+
+				</div>
 			</form>
         </div>
 	</div>
