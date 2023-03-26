@@ -19,9 +19,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">History</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Change Password</a>
-          </li>
         </ul>
     <?php 
         }      

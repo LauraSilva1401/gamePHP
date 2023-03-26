@@ -175,7 +175,7 @@ class User
 		//password encryted
 		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
 
-		$query = "UPDATE users (Password) VALUES ('".$this->password."');";
+		$query = "UPDATE users SET Password ='".$this->password."' WHERE userName='.$email.' ;";
 
 	    $invokeQuery = $this->db->query($query);
 
