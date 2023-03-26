@@ -8,6 +8,8 @@
       $valeButton="Log in";
       if (isset($_SESSION['LOGIN_STATUS'])) {
             $valeButton="Log out";
+
+            $histButton="Stop";
     ?>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,6 +29,15 @@
     ?>
       <form class="d-flex">
         <button class="btn btn-outline-success" type="submit" id="LogOut" value="<?= $valeButton?>"><?= $valeButton?></button>
+        <?php
+        if(isset($_SESSION['LOGIN_STATUS'])){
+          ?>
+          <button class="btn btn-outline-success" type="submit" id="Stop" value="<?= $histButton?>"><?= $histButton?></button>
+          <?php
+        }
+        ?>
+        
+      
       </form>
     </div>
   </div>

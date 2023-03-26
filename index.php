@@ -25,6 +25,15 @@ session_start();
 			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=game">
  	<?php
 		}
+	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'forgotPass') {
+		if (!isset($_SESSION['LOGIN_STATUS'])) {
+			require_once 'views/forgotPass.php';
+		}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=forgotPass">
+ 	<?php
+		}
+		
 	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'registration') {
 		if (!isset($_SESSION['LOGIN_STATUS'])) {
 			require_once 'views/registration.php';

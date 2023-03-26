@@ -98,6 +98,8 @@ class User
 		}
 	}
 
+
+
 	function insertDataDB(){
 
 		//validate sqlInjection
@@ -127,6 +129,31 @@ class User
 	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;
+	    	return TRUE;
+	    } 
+	}
+
+	function updateDataDB(){
+
+		//validate sqlInjection
+		
+		$this->password = mysqli_real_escape_string($this->db,$this->password);
+		//password encryted
+		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
+
+		$query = "UPDATE users (Password) VALUES ('".$this->password."');";
+
+	    $invokeQuery = $this->db->query($query);
+
+	    $this->db->close();
+	    
+	    if ($invokeQuery === FALSE){
+	    	//no user in db
+	    	return FALSE;
+	    }
+	    else{
+	    	
+	    
 	    	return TRUE;
 	    } 
 	}

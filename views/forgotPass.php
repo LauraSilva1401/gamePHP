@@ -8,14 +8,7 @@
 				<strong>An example danger alert.</strong> 
             </div>
       		<form>
-      			<div class="mb-3">
-			    <label for="fname" class="form-label">First Name</label>
-			    <input type="text" class="form-control" id="fname" name="fname" required>
-			  </div>
-			  <div class="mb-3">
-			    <label for="lname" class="form-label">LastName</label>
-			    <input type="text" class="form-control" id="lname" name="lname" required>
-			  </div>
+      			
 			  <div class="mb-3">
 			    <label for="email" class="form-label">Username</label>
 			    <input type="email" class="form-control" id="email" name="email" required>
