@@ -87,6 +87,11 @@ session_start();
 			}
 		}
 	}
+	if (isset($_SESSION['LOGIN_STATUS'])) {
+	?>
+		<script type="text/javascript" src="public/js/history.js"></script>
+	<?php
+	}
 	?>
 
 	<footer>

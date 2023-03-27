@@ -2,20 +2,24 @@
 /**
  * 
  */
+include'db.php';
 class History
 {
 	private $db;
 	private $result;
 	private $lives;
+	private $level;
+	private $user;
 	private $userId;
 	private $pass;
 
-	function __construct($result, $lives, $userId,$pass)
+	function __construct($result, $lives, $user,$pass,$level)
 	{
 		$this->result = $result;
 		$this->lives = $lives;
-		$this->userId = $userId;
+		$this->user = $user;
 		$this->pass = $pass;
+		$this->level = $level;
 	}
 
 	function validateDataDB(){
@@ -40,10 +44,11 @@ class History
 		$this->lives = mysqli_real_escape_string($this->db,$this->lives);
 		$this->userId = mysqli_real_escape_string($this->db,$this->userId);
 		$this->pass = mysqli_real_escape_string($this->db,$this->pass);
+		$this->level = mysqli_real_escape_string($this->db,$this->level);
 
 		if ($this->verifyUserBefore() == TRUE) {
-			$query = "INSERT INTO historypage (result, lives, userId) VALUES ('".$this->result."','".$this->lives."','".$this->userId."');";
-
+			$query = "INSERT INTO historypage (result, lives, userId,level) VALUES ('".$this->result."',".$this->lives.",'".$this->userId."',".$this->level.");";
+			
 		    $invokeQuery = $this->db->query($query);
 
 		    $this->db->close();
@@ -56,9 +61,6 @@ class History
 		    	//there is an user in the db
 		    	//start session variable
 		    	//session_start();
-		    	$_SESSION['email'] = $this->email;
-		    	$_SESSION['name'] = $this->fname;
-		    	$_SESSION['password'] = $this->password;
 		    	$_SESSION['LOGIN_STATUS'] = true;
 		    	$_SESSION['lives'] = 6;
 		    	$_SESSION['level'] = 1;
@@ -71,14 +73,15 @@ class History
 	function verifyUserBefore(){
 
 		//validate sqlInjection
-		$query = "SELECT * FROM users WHERE userName ='".$this->userId."';";
+		$query = "SELECT * FROM users WHERE userName ='".$this->user."';";
 		$invokeQuery = $this->db->query($query);
 
 		$each_row = $invokeQuery->fetch_array(MYSQLI_ASSOC);
 
 		$pwd_peppered = base64_decode($each_row['Password']);
-
+		
 		if (password_verify($this->pass,$pwd_peppered)) {
+			$this->userId = $each_row['id'];
 			return TRUE;
 		}
 		else {
