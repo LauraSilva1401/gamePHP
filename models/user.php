@@ -221,7 +221,7 @@ class User
 		    return TRUE;
 		}
 		else {
-		    return FALSE;
+		    return "Sorry wrong user/password";
 		}
 	}
 
