@@ -52,6 +52,8 @@ class User
 		
 		$this->email = strtolower(stripslashes(strip_tags(htmlentities($this->email))));
 		$this->password = stripslashes(strip_tags(htmlentities($this->password)));
+		$this->password2 = stripslashes(strip_tags(htmlentities($this->password2)));
+		
 		$email_regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
 		//validate size of all input data and if they are strings or not
@@ -175,7 +177,7 @@ class User
 		//password encryted
 		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
 
-		$query = "UPDATE users SET Password ='".$this->password."' WHERE userName='.$email.' ;";
+		$query = "UPDATE users SET Password ='".$this->password."' WHERE userName='".$this->email."' ;";
 
 	    $invokeQuery = $this->db->query($query);
 
@@ -187,13 +189,6 @@ class User
 	    }
 	    else{
 	    	
-			session_start();
-	    	$_SESSION['email'] = $this->email;
-	    	$_SESSION['name'] = $this->fname;
-	    	$_SESSION['password'] = $this->password;
-	    	$_SESSION['LOGIN_STATUS'] = true;
-	    	$_SESSION['lives'] = 6;
-	    	$_SESSION['level'] = 1;
 	    	return TRUE;
 	    } 
 	}

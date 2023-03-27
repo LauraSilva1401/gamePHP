@@ -30,7 +30,7 @@ session_start();
 			require_once 'views/forgotPass.php';
 		}else{
 	?>
-			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=forgotPass">
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=game">
  	<?php
 		}
 		

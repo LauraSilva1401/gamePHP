@@ -3,13 +3,13 @@ $(document).ready(function(){
     console.log("Entre JavaScript ResetP")
 
 	$("#reset").click( function(event) {    
-        //event.preventDefault();                             
+        event.preventDefault();                             
         var email = $("#email").val();
         var password = $("#password").val();
         var password2 = $("#password2").val();
    
-        debugger;
-/*
+
+
         $.post("controllers/forgotPass.php",{Email: email, Password: password,Password2: password2},function(res){
             console.log("***"+res+"***");
             if(res == true){
@@ -18,7 +18,7 @@ $(document).ready(function(){
                 if ( !$( '#PositiveAlert' ).hasClass( 'yes' ) ){
                     $( '#PositiveAlert' ).addClass( "yes" );
                 }
-               window.location.href = "index.php?pagina=forgotPass";   
+               window.location.href = "index.php?pagina=login";   
             }else{
                 console.log("entro no");
                 //$("#NegativeAlert").delay(500).fadeIn("slow"); 
@@ -30,7 +30,7 @@ $(document).ready(function(){
                 }
                 validatedForm(res);
             } 
-        })*/  
+        }) 
     });
 
     function validatedForm(ans){
