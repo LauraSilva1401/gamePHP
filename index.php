@@ -77,7 +77,13 @@ session_start();
 				<script type="text/javascript" src="public/js/game.js"></script>
 			<?php
 			}else{
-				//echo "nada";
+				if (isset($_GET['pagina']) && $_GET['pagina'] == 'forgotPass') {
+					?>
+						<script type="text/javascript" src="public/js/forgotPass.js"></script>
+					<?php
+					}else{
+						//echo "nada";
+					}
 			}
 		}
 	}
