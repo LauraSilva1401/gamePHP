@@ -13,7 +13,7 @@ class History
 	private $userId;
 	private $pass;
 
-	function __construct($result, $lives, $user,$pass,$level)
+	function __construct($user = null, $result = null, $lives = null,$pass = null,$level = null)
 	{
 		$this->result = $result;
 		$this->lives = $lives;
@@ -87,6 +87,46 @@ class History
 		else {
 		    return FALSE;
 		}
+	}
+
+
+	function GetHistoryData(){
+
+		//validate sqlInjection
+		$query = "SELECT historypage.id, historypage.date, historypage.result, historypage.lives, historypage.userId, historypage.level  FROM historypage JOIN users ON users.id = historypage.userId WHERE userName ='".$this->user."';";
+		$invokeQuery = $this->db->query($query);
+		$table = "<caption>History of user</caption>
+				  <thead>
+		  			<tr>
+						<th scope='col'>ID</th>
+						<th scope='col'>Date</th>
+						<th scope='col'>Result</th>
+						<th scope='col'>Lives</th>
+						<th scope='col'>UserId</th>
+						<th scope='col'>Level</th>
+		  			</tr>
+				</thead>
+				<tbody>";
+				
+		if($invokeQuery->num_rows > 0){
+			while($row = $invokeQuery->fetch_assoc()){
+	
+				$table = $table . "<tr>
+				<td>". $row["id"] ."</td>
+				<td>". $row["date"] ."</td>
+				<td>". $row["result"] ."</td>
+				<td>". $row["lives"] ."</td>
+				<td>". $row["userId"] ."</td>
+				<td>". $row["level"] ."</td>
+				</tr>";
+			}
+		}
+
+		$table = $table . "</tbody>";
+
+		return $table;
+		
+	
 	}
 
 }
