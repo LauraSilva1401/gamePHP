@@ -6,24 +6,34 @@ $lives = $_SESSION['lives'];
 $level = $_SESSION['level'];
 $userId = $_SESSION['email'];
 $pass = $_SESSION['password'];
-$logout = new History($result, $lives, $userId,$pass,$level);
-$ans = $logout->validateDataDB();
 
-if ($ans === true) {
+if (isset($_POST["type"])) {
+	$type = $_POST["type"];
+	if ($type == 1) {
+		$logout = new History($result, $lives, $userId,$pass,$level);
+		$ans = $logout->validateDataDB();
 
-	$ans = $logout -> insertDataDB();
+		if ($ans === true) {
 
-	if($ans === true)
-	{
-		echo $ans;
-	}
-	else
-	{
-		echo $ans;
+			$ans = $logout -> insertDataDB();
+
+			if($ans === true)
+			{
+				echo $ans;
+			}
+			else
+			{
+				echo $ans;
+			}
+		}
+		else
+		{
+			echo $ans;
+		}
+	}elseif ($type == 2) {
+		// aca llama tus funciones del model
 	}
 }
-else
-{
-	echo $ans;
-}
+
+	
 ?>
