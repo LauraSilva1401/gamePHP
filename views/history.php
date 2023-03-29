@@ -1,3 +1,5 @@
+
+<div class="table-responsive">
 <table id="historyTable" class="table caption-top">
   <caption>History of user</caption>
   <thead>
@@ -57,3 +59,6 @@
  
   </tbody>
 </table>
+
+  
+</div>
