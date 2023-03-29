@@ -29,7 +29,7 @@ $(document).ready(function(){
                     //window.location.href = "index.php?pagina=game"; 
                     setTimeout(function(){
                         window.location.href = "index.php?pagina=game"; 
-                    }, 4000);
+                    }, 3000);
                 }
             } 
         })  

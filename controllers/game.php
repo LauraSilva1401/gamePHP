@@ -78,6 +78,20 @@ if (isset($_POST["Type"])) {
 						echo json_encode($arrayAns);
 					}
 				}
+				/*
+				//aca validar history
+				if ($_SESSION["LOGIN_STATUS"] == FALSE || $_SESSION["lives"]==0) {
+					require_once '../models/history.php';
+					$result = ($_SESSION['LOGIN_STATUS'] == FALSE) ?"WON":"LOSE";
+					$lives = $_SESSION['lives'];
+					$level = $_SESSION['level'];
+					$userId = $_SESSION['email'];
+					$pass = $_SESSION['password'];
+					$logout = new History($result, $lives, $userId,$pass,$level);
+					$ans = $logout->validateDataDB();
+					$ans = $logout -> insertDataDB();
+				}
+				*/
 			}else{
 				if ($_SESSION["lives"]>0 && $_SESSION["LOGIN_STATUS"] == TRUE){
 					$ans = "Sorry you dont have more lives, restart the game";
