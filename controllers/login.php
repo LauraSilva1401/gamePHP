@@ -9,22 +9,16 @@ $login = new User($email,$password);
 $ans = $login->validateDataLogin();
 
 if ($ans === true) {
-	if ($ans === true){
-		$ans = $login -> validateDataDB();
-		if ($ans === true) {
+	$ans = $login -> validateDataDB();
+	if ($ans === true) {
 
-			$ans = $login -> compareData();
+		$ans = $login -> compareData();
 
-			if($ans === true)
-			{
-				// user exists
-				$ans = $login -> loginDataDB();
-				echo $ans;
-			}
-			else
-			{
-				echo $ans;
-			}
+		if($ans === true)
+		{
+			// user exists
+			$ans = $login -> loginDataDB();
+			echo $ans;
 		}
 		else
 		{

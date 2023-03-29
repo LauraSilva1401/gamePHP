@@ -143,6 +143,7 @@ class User
 		$this->fname = mysqli_real_escape_string($this->db,$this->fname);
 		$this->lname = mysqli_real_escape_string($this->db,$this->lname);
 		$this->password = mysqli_real_escape_string($this->db,$this->password);
+		$this->password_2 = $this->password ;
 		//password encryted
 		$this->password = base64_encode(password_hash($this->password, PASSWORD_BCRYPT, ["cost" => 10]));
 
@@ -162,7 +163,7 @@ class User
 	    	session_start();
 	    	$_SESSION['email'] = $this->email;
 	    	$_SESSION['name'] = $this->fname;
-	    	$_SESSION['password'] = $this->password;
+	    	$_SESSION['password'] = $password_2;
 	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;
@@ -209,7 +210,7 @@ class User
 	    	session_start();
 	    	$_SESSION['email'] = $this->email;
 	    	$_SESSION['name'] = $each_row['FirstName'];
-	    	$_SESSION['password'] = $pwd_peppered;
+	    	$_SESSION['password'] = $this->password;
 	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;
