@@ -18,6 +18,7 @@ $(document).ready(function(){
                 if ( !$( '#PositiveAlert' ).hasClass( 'yes' ) ){
                     $( '#PositiveAlert' ).addClass( "yes" );
                 }
+                alert("Password updated succesfully!");
                window.location.href = "index.php?pagina=login";   
             }else{
                 console.log("entro no");
@@ -36,7 +37,7 @@ $(document).ready(function(){
     function validatedForm(ans){
     	
         
-    if($("#email").val() == "" || ans === "Error, email lenght must be between 15 and 30" || ans === "Error, write a correct email!"){
+        if($("#email").val() == "" || ans === "Error, email lenght must be between 15 and 30" || ans === "Error, write a correct email!"){
 		    
         $("#email").focus();
 		
@@ -56,6 +57,9 @@ $(document).ready(function(){
                 }
 			}
 		}
+
+    
+
     }
         	
     setInterval(function () {

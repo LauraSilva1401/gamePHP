@@ -25,7 +25,7 @@
         
     ?>
       <form class="d-flex">
-        <button class="btn btn-outline-success" type="submit" id="LogOut" value="<?= $valeButton?>"><?= $valeButton?></button>
+        
         <?php
         if(isset($_SESSION['LOGIN_STATUS'])){
           ?>
@@ -33,7 +33,8 @@
           <?php
         }
         ?>
-        
+
+          <button class="btn btn-outline-success" type="submit" id="LogOut" value="<?= $valeButton?>"><?= $valeButton?></button>
       
       </form>
     </div>
