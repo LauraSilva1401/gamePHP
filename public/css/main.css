@@ -113,3 +113,17 @@ footer
     display: grid;
     gap: 1.5rem;
 } */
+
+
+/*
+history
+*/
+
+#historyTable{
+	border: solid #23598f;
+	padding: 0;
+    margin: 0;
+    
+    box-sizing: border-box;
+    
+}

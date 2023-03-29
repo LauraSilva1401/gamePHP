@@ -17,7 +17,7 @@
             <a class="nav-link active" aria-current="page" href="index.php?pagina=game">Game</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">History</a>
+            <a class="nav-link" href="index.php?pagina=history">History</a>
           </li>
         </ul>
     <?php 

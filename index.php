@@ -34,6 +34,15 @@ session_start();
  	<?php
 		}
 		
+	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'history') {
+		if (isset($_SESSION['LOGIN_STATUS'])) {
+			require_once 'views/history.php';
+		}else{
+	?>
+			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?pagina=game">
+ 	<?php
+		}
+		
 	}elseif (isset($_GET['pagina']) && $_GET['pagina'] == 'registration') {
 		if (!isset($_SESSION['LOGIN_STATUS'])) {
 			require_once 'views/registration.php';
