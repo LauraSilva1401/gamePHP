@@ -28,7 +28,7 @@ class User
 		$this -> email = strtolower(stripslashes(strip_tags(htmlentities($this -> email))));
 		$this -> password = stripslashes(strip_tags(htmlentities($this -> password)));
 
-		if(!is_numeric($this -> email) && strlen($this -> email) > 14 && strlen($this -> email) < 31 ){
+		if(!is_numeric($this -> email) && strlen($this -> email) > 4 && strlen($this -> email) < 16 ){
 			if (strlen($this->password)>5 && strlen($this->password)<13 ) {
 				return true;
 			}else{
@@ -39,7 +39,7 @@ class User
 		}
 		else
 		{
-			return "Error, email length must be between 15 and 30";
+			return "Error, username length must be between 5 and 15";
 		}
 
 	}
@@ -58,7 +58,7 @@ class User
 
 		//validate size of all input data and if they are strings or not
 	
-				if (!is_numeric($this->email) && strlen($this->email)>14 && strlen($this->email)<31 && preg_match($email_regex, $this->email)) {
+				if (!is_numeric($this->email) && strlen($this->email)>4 && strlen($this->email)<16 /*&& preg_match($email_regex, $this->email)*/) {
 					if (strlen($this->password)>5 && strlen($this->password)<13 && $this->password==$this->password2) {
 						return true;
 					}else{
@@ -70,11 +70,11 @@ class User
 						
 					}
 				}else{
-					if (!preg_match($email_regex, $this->email)) {
+					/*if (!preg_match($email_regex, $this->email)) {
 						return "Error, write a correct email!";
-					}else{
-						return "Error, email lenght must be between 15 and 30";						
-					}
+					}else{*/
+						return "Error, username lenght must be between 5 and 15";						
+					//}
 				}
 
 	}
@@ -92,7 +92,7 @@ class User
 		//validate size of all input data and if they are strings or not
 		if (!is_numeric($this->fname) && strlen($this->fname)>3 && strlen($this->fname)<18) {
 			if (!is_numeric($this->lname) && strlen($this->lname)>3 && strlen($this->lname)<18) {
-				if (!is_numeric($this->email) && strlen($this->email)>14 && strlen($this->email)<31 && preg_match($email_regex, $this->email)) {
+				if (!is_numeric($this->email) && strlen($this->email)>4 && strlen($this->email)<16 /*&& preg_match($email_regex, $this->email)*/) {
 					if (strlen($this->password)>5 && strlen($this->password)<13 && $this->password==$this->password2) {
 						return true;
 					}else{
@@ -104,11 +104,11 @@ class User
 						
 					}
 				}else{
-					if (!preg_match($email_regex, $this->email)) {
-						return "Error, write a correct email!";
-					}else{
-						return "Error, email lenght must be between 15 and 30";						
-					}
+					/*if (!preg_match($email_regex, $this->email)) {
+						return "Error, write a correct username!";
+					}else{*/
+						return "Error, username lenght must be between 5 and 15";						
+					//}
 				}
 			}else{
 				return "Error, lastName must be letter a-z and lenght between 4 and 17";
@@ -163,7 +163,7 @@ class User
 	    	session_start();
 	    	$_SESSION['email'] = $this->email;
 	    	$_SESSION['name'] = $this->fname;
-	    	$_SESSION['password'] = $password_2;
+	    	$_SESSION['password'] = $this->password_2;
 	    	$_SESSION['LOGIN_STATUS'] = true;
 	    	$_SESSION['lives'] = 6;
 	    	$_SESSION['level'] = 1;

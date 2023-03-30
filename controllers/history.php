@@ -1,6 +1,12 @@
 <?php 
 require_once '../models/history.php';
-session_start();
+
+if (session_status()) {
+	if (!isset($_SESSION["level"])) {
+		session_start();
+	}
+}
+//session_start();
 $result = ($_SESSION['LOGIN_STATUS'] == FALSE) ?"WON":"LOSE";
 $lives = $_SESSION['lives'];
 $level = $_SESSION['level'];

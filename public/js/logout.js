@@ -8,12 +8,17 @@ console.log("entro a logout");
             event.preventDefault(); 
             window.location.href = "index.php?pagina=login"; 
         }else{
-            event.preventDefault();     
-            $.post("controllers/logOut.php",{},function(res){
-                console.log("***"+res+"***");
-                window.location.href = "index.php?pagina=login";   
-                
-            })
+            event.preventDefault();
+            $.post("controllers/history.php",{type:1},function(res){
+                if(res == true){
+                    $.post("controllers/logOut.php",{},function(res2){
+
+                        console.log("***"+res2+"***");
+                        window.location.href = "index.php?pagina=login";   
+                        
+                    })
+                }
+            }) 
         }          
     });
 });

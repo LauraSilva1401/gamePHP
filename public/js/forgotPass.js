@@ -18,8 +18,11 @@ $(document).ready(function(){
                 if ( !$( '#PositiveAlert' ).hasClass( 'yes' ) ){
                     $( '#PositiveAlert' ).addClass( "yes" );
                 }
-                alert("Password updated succesfully!");
-               window.location.href = "index.php?pagina=login";   
+               // alert("Password updated succesfully!");
+                setTimeout(function(){
+                        window.location.href = "index.php?pagina=login";  
+                    }, 4000);
+                
             }else{
                 console.log("entro no");
                 //$("#NegativeAlert").delay(500).fadeIn("slow"); 
