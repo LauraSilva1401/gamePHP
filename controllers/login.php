@@ -22,7 +22,7 @@ if ($ans === true) {
 		}
 		else
 		{
-			echo $ans;
+			echo "Sorry wrong user/password";
 		}
 	}
 	else
